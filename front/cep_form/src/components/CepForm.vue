@@ -99,7 +99,7 @@ export default {
         this.loading = true;
         this.isDisabled = true;
         setTimeout(async () => {
-          await fetch(`https://viacep.com.br/ws/${this.myInputModel}/json/`)
+          await fetch(`http://localhost:3000/${this.myInputModel}`)
             .then(async (response) => {
               const data = await response.json();
               console.log(data);
@@ -121,7 +121,7 @@ export default {
             });
           this.loading = false;
           this.isDisabled = false;
-        }, 3000);
+        }, 2000);
       }
     },
   },
@@ -155,7 +155,10 @@ export default {
 }
 
 #form-control input:focus {
-  border: rgba(48, 101, 245, 0.699) 2px solid;
+  /* border: rgba(48, 101, 245, 0.699) 2px solid;
+   */
+  outline: rgba(48, 101, 245, 0.699) 2px solid;
+  border: none;
 }
 
 #form-control button {
