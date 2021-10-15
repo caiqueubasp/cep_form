@@ -34,6 +34,4 @@ app.get("/:cep", async (req, res) => {
   }
 });
 
-app.listen(3000, () =>
-  console.log("servidor rodando em ---  http://localhost/3000")
-);
+export default app;
