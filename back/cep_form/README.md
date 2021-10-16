@@ -42,9 +42,9 @@
 
 ## Setup
 
-Primeiramente é necessário baixar o projeto e do GitHub em sua maquina local
-HTTPS - 'https://github.com/caiqueubasp/cep_form.git'
-SSH - 'git@github.com:caiqueubasp/cep_form.git'
+Primeiramente é necessário baixar o projeto e do GitHub em sua maquina local <br/>
+HTTPS - `git clone https://github.com/caiqueubasp/cep_form.git` <br/>
+SSH - `git clone git@github.com:caiqueubasp/cep_form.git` <br/>
 
 ## Usage
 
