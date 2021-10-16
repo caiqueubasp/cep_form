@@ -2,11 +2,11 @@
   "name": "cep_form",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "./src/server.js",
   "type": "module",
   "scripts": {
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
-    "start": "nodemon --experimental-modules --es-module-specifier-resolution=node app.js"
+    "start": "nodemon --experimental-modules --es-module-specifier-resolution=node ./src/app.js"
   },
   "author": "",
   "license": "ISC",

@@ -1,30 +1,23 @@
 import axios from "axios";
 import express from "express";
 import cors from "cors";
+import ParseAddress from "./models/ParseAddress.js";
 
 const app = express();
 app.use(cors());
 
 app.get("/:cep", async (req, res) => {
-  var { cep } = req.params;
-  var url = `http://viacep.com.br/ws/${cep}/json`;
+  const { cep } = req.params;
+  const url = `http://viacep.com.br/ws/${cep}/json`;
 
   try {
     const response = await axios.get(url);
-    console.log(response.data);
-    var data = response.data;
-    console.log("STATUS: ", response.status);
+    const data = response.data;
 
     if (data.erro) {
-      console.log(data.erro);
       res.status(406).send(data);
     } else {
-      var customData = {
-        cep: data.cep,
-        logradouro: data.logradouro,
-        localidade: data.localidade,
-        uf: data.uf,
-      };
+      const customData = ParseAddress.parseData(data);
 
       res.status(200).send(customData);
     }
