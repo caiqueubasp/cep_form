@@ -1,7 +1,7 @@
 <template>
   <div id="gran-container">
-    <div id="container">
-      <div id="form-control">
+    <section id="container">
+      <form id="form-control">
         <input
           type="number"
           placeholder="00000-000"
@@ -15,10 +15,11 @@
           class="default--word--style"
           @click="getCepData"
         >
-          Buscar CEP
+          {{ this.usedStrings.lookCep }}
         </button>
-      </div>
-    </div>
+      </form>
+    </section>
+
     <div id="loading-container" class="flex--center--config">
       <pulse-loader
         :loading="loading"
@@ -27,30 +28,34 @@
       ></pulse-loader>
     </div>
 
-    <div id="cep-response" class="flex--center--config">
+    <section id="cep-response" class="flex--center--config">
       <ul>
         <li>
           <p class="default--word--style">
-            <span class="font-title">CEP: </span> {{ cep }}
+            <strong class="font-title"> {{ this.usedStrings.cep }} </strong>
+            {{ cep }}
           </p>
         </li>
         <li>
           <p class="default--word--style">
-            <span class="font-title">Estado: </span> {{ estado }}
+            <strong class="font-title">{{ this.usedStrings.state }}</strong>
+            {{ estado }}
           </p>
         </li>
         <li>
           <p class="default--word--style">
-            <span class="font-title">Cidade: </span> {{ cidade }}
+            <strong class="font-title">{{ this.usedStrings.city }}</strong>
+            {{ cidade }}
           </p>
         </li>
         <li>
           <p class="default--word--style">
-            <span class="font-title">Logradouro: </span> {{ logradouro }}
+            <strong class="font-title">{{ this.usedStrings.address }}</strong>
+            {{ logradouro }}
           </p>
         </li>
       </ul>
-    </div>
+    </section>
   </div>
 </template>
 <script>
@@ -79,6 +84,15 @@ export default {
       loading: false,
       color: "#000",
       size: "10px",
+      usedStrings: {
+        invalidCep: "Digite um CEP válido!",
+        invalidCepTypeOther: "CEP não encontrado. Digite um CEP válido!",
+        lookCep: "Buscar CEP",
+        cep: "CEP: ",
+        state: "Estado: ",
+        city: "Cidade: ",
+        address: "Logradouro: ",
+      },
     };
   },
 
@@ -90,11 +104,8 @@ export default {
       alert(msg);
     },
     async getCepData() {
-      console.log("TAMANHO DO CEP", this.myInputModel.length);
-
       if (this.myInputModel.length < 8) {
-        console.log("TAMANHO DO CEP", this.myInputModel.length);
-        this.cepError("Digite um CEP válido!");
+        this.cepError(this.usedStrings.invalidCep);
       } else {
         this.loading = true;
         this.isDisabled = true;
@@ -104,7 +115,7 @@ export default {
               const data = await response.json();
               console.log(data);
               if (data.erro == true) {
-                this.cepError("CEP não encontrado. Digite um CEP válido!");
+                this.cepError(this.usedStrings.invalidCepTypeOther);
                 console.error("INVALID REQUEST");
                 this.changeCepDetailsVisibilty("none");
               } else {
@@ -116,33 +127,39 @@ export default {
               }
             })
             .catch((error) => {
-              this.cepError("CEP não encontrado. Digite um CEP válido!");
+              this.cepError(this.usedStrings.invalidCepTypeOther);
               console.error("ERROR", error);
             });
           this.loading = false;
           this.isDisabled = false;
-        }, 2000);
+        }, 1500);
       }
     },
   },
 };
 </script>
 
-<style scoped>
+<style>
+:root {
+  --global--gray--color: #bdbdbd;
+  --global--dark--gray--color: #6f7073;
+  --global--blue--color: #3065f5;
+}
+
 #gran-container {
   width: 100%;
   height: 800px;
-  background-color: rgb(189, 189, 189);
+  background-color: var(--global--gray--color);
 }
 
-#container {
+#gran-container #container {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-#form-control {
+#gran-container #form-control {
   width: 500px;
   height: 100px;
   background-color: white;
@@ -152,18 +169,19 @@ export default {
   margin-top: 5%;
 }
 
-#form-control input {
+#gran-container #form-control input {
   width: 200px;
   height: 50px;
-  color: #85888c;
+  color: var(--global--dark--gray--color);
   font-size: 24px;
   margin-right: 2%;
-  border: 1px solid gray;
+  border: 1px solid var(--global--gray--color);
 }
 
-#form-control input:focus {
-  outline: rgba(48, 101, 245, 0.699) 2px solid;
+#gran-container #form-control input:focus {
+  outline: var(--global--blue--color) 2px solid;
   border: none;
+  opacity: 0.6;
 }
 
 #form-control button {
@@ -175,12 +193,12 @@ export default {
   border: none;
 }
 
-#form-control button:active {
+#gran-container #form-control button:active {
   opacity: 0.8;
   transform: scale(0.9);
 }
 
-#form-control button:hover {
+#gran-container #form-control button:hover {
   opacity: 0.8;
 }
 
@@ -193,7 +211,7 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 
-#loading-container {
+#gran-container #loading-container {
   width: 100%;
   height: 40px;
 }
@@ -206,56 +224,52 @@ input[type="number"] {
   margin: auto;
 }
 
-ul {
+#gran-container ul {
   list-style-type: none;
   width: 400px;
 }
 
-li {
+#gran-container li {
   width: 400px;
   text-align: start;
 }
 
-span {
+#gran-container span {
   font-weight: bold;
 }
 
-.font-title {
+#gran-container .font-title {
   color: black;
   font-size: 18px;
   font-weight: bold;
   opacity: 0.7;
 }
 
-.gray-color {
-  color: #85888c;
-}
-
-.flex--center--config {
+#gran-container .flex--center--config {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.default--word--style {
+#gran-container .default--word--style {
   font-size: 16px;
-  color: #85888c;
+  color: var(--global--dark--gray--color);
 }
 
 @media (min-width: 100px) and (max-width: 500px) {
   #gran-container {
     width: 100%;
     height: 600px;
-    background-color: rgb(189, 189, 189);
+    background-color: var(--global--gray--color);
   }
 
-  #container {
+  #gran-container #container {
     display: flex;
     justify-content: center;
     align-items: center;
   }
 
-  #form-control {
+  #gran-container #form-control {
     width: 400px;
     height: 200px;
     background-color: white;
@@ -266,13 +280,13 @@ span {
     margin-top: 15%;
   }
 
-  #form-control input {
+  #gran-container #form-control input {
     width: 300px;
     height: 50px;
     margin-right: 0%;
   }
 
-  #form-control button {
+  #gran-container #form-control button {
     width: 300px;
     height: 50px;
     margin: 1px;
@@ -281,7 +295,7 @@ span {
     border: none;
   }
 
-  #gran-container #cep-response {
+  #gran-container #gran-container #cep-response {
     width: 400px;
     height: 200px;
     background-color: white;
@@ -289,11 +303,11 @@ span {
     margin: auto;
   }
 
-  .font-title {
+  #gran-container .font-title {
     font-size: 14px;
   }
 
-  .default--word--style {
+  #gran-container .default--word--style {
     font-size: 12px;
   }
 }
