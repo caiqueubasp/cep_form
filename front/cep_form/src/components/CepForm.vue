@@ -18,38 +18,38 @@
           Buscar CEP
         </button>
       </div>
-      <div id="loading-container" class="flex--center--config">
-        <pulse-loader
-          :loading="loading"
-          :color="color"
-          :size="size"
-        ></pulse-loader>
-      </div>
+    </div>
+    <div id="loading-container" class="flex--center--config">
+      <pulse-loader
+        :loading="loading"
+        :color="color"
+        :size="size"
+      ></pulse-loader>
+    </div>
 
-      <div id="cep-response" class="flex--center--config">
-        <ul>
-          <li>
-            <p class="default--word--style">
-              <span class="font-title">CEP: </span> {{ cep }}
-            </p>
-          </li>
-          <li>
-            <p class="default--word--style">
-              <span class="font-title">Estado: </span> {{ estado }}
-            </p>
-          </li>
-          <li>
-            <p class="default--word--style">
-              <span class="font-title">Cidade: </span> {{ cidade }}
-            </p>
-          </li>
-          <li>
-            <p class="default--word--style">
-              <span class="font-title">Logradouro: </span> {{ logradouro }}
-            </p>
-          </li>
-        </ul>
-      </div>
+    <div id="cep-response" class="flex--center--config">
+      <ul>
+        <li>
+          <p class="default--word--style">
+            <span class="font-title">CEP: </span> {{ cep }}
+          </p>
+        </li>
+        <li>
+          <p class="default--word--style">
+            <span class="font-title">Estado: </span> {{ estado }}
+          </p>
+        </li>
+        <li>
+          <p class="default--word--style">
+            <span class="font-title">Cidade: </span> {{ cidade }}
+          </p>
+        </li>
+        <li>
+          <p class="default--word--style">
+            <span class="font-title">Logradouro: </span> {{ logradouro }}
+          </p>
+        </li>
+      </ul>
     </div>
   </div>
 </template>
@@ -131,8 +131,12 @@ export default {
 <style scoped>
 #gran-container {
   width: 100%;
-  height: 500px;
+  height: 800px;
   background-color: rgb(189, 189, 189);
+}
+
+#container {
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -145,6 +149,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 5%;
 }
 
 #form-control input {
@@ -152,11 +157,11 @@ export default {
   height: 50px;
   color: #85888c;
   font-size: 24px;
+  margin-right: 2%;
+  border: 1px solid gray;
 }
 
 #form-control input:focus {
-  /* border: rgba(48, 101, 245, 0.699) 2px solid;
-   */
   outline: rgba(48, 101, 245, 0.699) 2px solid;
   border: none;
 }
@@ -172,8 +177,7 @@ export default {
 
 #form-control button:active {
   opacity: 0.8;
-  width: 115px;
-  height: 45px;
+  transform: scale(0.9);
 }
 
 #form-control button:hover {
@@ -190,7 +194,7 @@ input[type="number"] {
 }
 
 #loading-container {
-  width: 500px;
+  width: 100%;
   height: 40px;
 }
 
@@ -199,6 +203,7 @@ input[type="number"] {
   height: 200px;
   background-color: white;
   display: none;
+  margin: auto;
 }
 
 ul {
@@ -235,5 +240,61 @@ span {
 .default--word--style {
   font-size: 16px;
   color: #85888c;
+}
+
+@media (min-width: 100px) and (max-width: 500px) {
+  #gran-container {
+    width: 100%;
+    height: 600px;
+    background-color: rgb(189, 189, 189);
+  }
+
+  #container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #form-control {
+    width: 400px;
+    height: 200px;
+    background-color: white;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15%;
+  }
+
+  #form-control input {
+    width: 300px;
+    height: 50px;
+    margin-right: 0%;
+  }
+
+  #form-control button {
+    width: 300px;
+    height: 50px;
+    margin: 1px;
+    background-color: black;
+    color: white;
+    border: none;
+  }
+
+  #gran-container #cep-response {
+    width: 400px;
+    height: 200px;
+    background-color: white;
+    display: none;
+    margin: auto;
+  }
+
+  .font-title {
+    font-size: 14px;
+  }
+
+  .default--word--style {
+    font-size: 12px;
+  }
 }
 </style>

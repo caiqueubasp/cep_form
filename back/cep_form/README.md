@@ -14,7 +14,6 @@
 - [Room for Improvement](#room-for-improvement)
 - [Acknowledgements](#acknowledgements)
 - [Contact](#contact)
-<!-- * [License](#license) -->
 
 ## General Information
 
@@ -22,14 +21,14 @@
   que faz uma consulta na no endpoint: http://viacep.com.br/ws/ ,
   faz um parse da resposta e disponibiliza um resumo das informações.
 
-## Technologies Used
-
----PRO---
+## Technologies Used PROD
 
 - NODE - version 14.18.0
 - AXIOS - version ^0.23.0
 - CORS - version ^2.8.5
-  ---DEV---
+
+## Technologies Used PROD DEV
+
 - EXPRESS - version ^4.17.1
 - JEST - version ^27.2.5
 - JEST-CLI - version ^27.2.5
@@ -42,49 +41,40 @@
 
 ## Setup
 
-Primeiramente é necessário baixar o projeto e do GitHub em sua maquina local <br/>
+Para este projeto rodar é necessário ter o NODE instalado em sua maquina, caso ainda não tenha
+veja o link: https://nodejs.org/en/download/ e instale antes de continuar.
+
+Com o node instalado é necessário baixar o projeto e do GitHub em sua maquina local <br/>
+
 HTTPS - `git clone https://github.com/caiqueubasp/cep_form.git` <br/>
 SSH - `git clone git@github.com:caiqueubasp/cep_form.git` <br/>
 
+Após baixar com o GIT, instale as dependencias:
+
+dependencias gerais: `npm install`
+dependencias em DEV: `npm i -D`
+
 ## Usage
 
-How does one go about using it?
-Provide various use cases and code examples here.
+Para este projeto selecionei a porta 3000, caso a mesma esteja rodando em outro local, deixe-a livre
+ou mude no arquivo "src/server.js" a porta listada. <br/>
 
-`write-your-code-here`
+para rodar o servidor digite no terminal: <br/>
 
-## Project Status
+`nodemon server.js`
 
-Project is: _in progress_ / _complete_ / _no longer being worked on_. If you are no longer working on it, provide reasons why.
+## Utils Links
 
-## Room for Improvement
-
-Include areas you believe need improvement / could be improved. Also add TODOs for future development.
-
-Room for improvement:
-
-- Improvement to be done 1
-- Improvement to be done 2
-
-To do:
-
-- Feature to be added 1
-- Feature to be added 2
-
-## Acknowledgements
-
-Give credit here.
-
-- This project was inspired by...
-- This project was based on [this tutorial](https://www.example.com).
-- Many thanks to...
+- NODE: https://nodejs.org/en/download/
+- NODEMON: https://www.npmjs.com/package/nodemon
+- AXIOS: https://www.npmjs.com/package/axios
+- CORS: https://www.npmjs.com/package/cors
+- EXPRESS: https://expressjs.com/pt-br/
+- JEST: https://jestjs.io/
+- SUPERTEST: https://www.npmjs.com/package/supertest
 
 ## Contact
 
-Created by [@flynerdpl](https://www.flynerd.pl/) - feel free to contact me!
-
-<!-- Optional -->
-<!-- ## License -->
-<!-- This project is open source and available under the [... License](). -->
-
-<!-- You don't have to include all sections - just the one's relevant to your project -->
+Created by [@caiqueubasp] - feel free to contact me!
+LinkedIn: https://www.linkedin.com/in/caique-souza-00072669/
+GITHUB: https://github.com/caiqueubasp
