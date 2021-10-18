@@ -132,7 +132,7 @@ export default {
             });
           this.loading = false;
           this.isDisabled = false;
-        }, 1500);
+        }, 1200);
       }
     },
   },
