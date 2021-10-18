@@ -1,9 +1,8 @@
 module.exports = {
-  preset: "@vue/cli-plugin-unit-jest",
   verbose: true,
   testURL: "http://localhost/",
   transform: {
-    "^.+\\.jsx?$": "babel-jest",
+    "^.+\\.jsx?$": "babel-jest"
   },
-  testMatch: ["**/__tests__/*.js?(x)"],
+  testMatch: ["**/__tests__/*.js?(x)"]
 };

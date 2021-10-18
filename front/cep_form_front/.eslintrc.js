@@ -3,19 +3,19 @@ module.exports = {
     browser: true,
     es6: true,
     node: true,
-    jest: true,
+    jest: true
   },
   extends: ["eslint:recommended", "plugin:vue/essential"],
   globals: {
     Atomics: "readonly",
-    SharedArrayBuffer: "readonly",
+    SharedArrayBuffer: "readonly"
   },
   parserOptions: {
     ecmaVersion: 2018,
-    sourceType: "module",
+    sourceType: "module"
   },
-  plugins: ["vue", "jest"],
+  plugins: ["vue"],
   rules: {
-    "no-unused-vars": "off",
-  },
+    "no-unused-vars": "off"
+  }
 };
